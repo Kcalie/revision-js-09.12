@@ -26,11 +26,11 @@ function listAge(min,max){
 }
 
 function listPays(){
-let listPays = ['france', 'us'] 
+let liste = ['france', 'us'] 
 let selectPays = document.getElementById('pays');
-for(i=0;i < listPays.length;i++){
-    selectPays.innerHTML+='<option value="'+listPays[i]+'">'+listPays[i]+' </option>';
-}
+for(let i=0;i <liste.length;i++){
+    document.getElementById('pays').innerHTML+='<option value="'+liste[i]+'">'+liste[i]+' </option>';
+    }
 }
 
 function verifLength(element,longueur) {
@@ -102,6 +102,7 @@ function verifAge(){
         document.getElementById('message').innerText = "vous avez l'age necessaire";
         document.getElementById('submit').removeAttribute('disabled');
         document.getElementById('submit').innerText = 'Inscription';
+        // changement de l'action du formulaire
         if(age.value < 21){
             document.forms['javascript'].setAttribute('action', 'jeune.php');
         }
@@ -131,7 +132,7 @@ function verifEmail(element){
     }
 }
 function verifTel(element){
-    let regex = /^[0-9]{10,}$/i
+    let regex = /^[0-9]{10}$/i
     if(regex.test(element.value)) {
         element.style.background = 'green';
     } else {
@@ -176,3 +177,29 @@ function verifForm(){
 listAge(12,70);
 listPays();
 verifAge();
+(function(){
+    let httpRequest;
+    document.getElementById('ajax').addEventListener('click',makeRequest);
+
+    function makeRequest() {
+        // on instancie XMLHttpRequest
+        httpRequest = new XMLHttpRequest();
+
+        if(!httpRequest){
+            console.log("erreur lors de la creation de l'instance");
+            return false;
+        }
+        httpRequest.onreadystatechange = traiterRequete;
+        httpRequest.open('GET', 'ajax.html');
+        httpRequest.send();
+    }
+    function traiterRequete() {
+        if(httpRequest.readystate === XMLHttpRequest.DONE) {
+            if(httpRequest.statue === 200) {
+                document.getElementById('retour_ajax').innerHTML = httpRequest.responseText;
+            } else {
+                console.log("erreur avec la requête");
+            }
+        }
+    }
+})();
