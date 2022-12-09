@@ -14,18 +14,29 @@
         <label for="nom">nom</label>
         <input type="text" name="nom" id="nom">
     </div>
-        <div class="input">
+    <div class="input">
         <label for="nom">prenom</label>
         <input type="text" name="prenom" id="prenom">
     </div>
-        <div class="input">
+    <div class="input">
         <label for="age">age</label>
         <select name="age" id="age" onchange="verifAge();">
         </select>
     </div>
-        <div class="input">
+
+    <div class="input">
+        <label for="pays">pays</label>
+        <select name="pays" id="pays" onchange="listPays();">
+        </select>
+    </div>
+
+    <div class="input">
         <label for="email">email</label>
         <input type="email" name="email" id="email" onblur="verifEmail(this);">
+    </div>
+    <div class="input">
+        <label for="telephone">telephone</label>
+        <input type="text" name="telephone" id="telephone" onblur="verifTel(this);">
     </div>
     <div class="input">
         <label for="password1">password</label>
@@ -35,7 +46,7 @@
         <button type="button" onclick="affiche5mdp();">Voir pendant 5sec</button>
         <button type="button" onclick="clickreclick();" id="btn-affiche">voir last</button>
     </div><!--onkeyup prends en compte dès qu'on relache la touche-->
-        <div class="input">
+    <div class="input">
         <label for="password2">repeter password</label>
         <input type="password" name="password2" id="password2" onblur="verifPassword();"><!--onblur = dès que l'on quitte le champ affiche les 2 mdp ne correspondent pas-->
     </div>
